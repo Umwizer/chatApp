@@ -1,13 +1,10 @@
 import express from 'express';
-const router = express.Router();
-router.post('/login', (req, res) => {
-    res.send('Login successful');
-});
-router.post('/logout', (req, res) => {
-    res.send('Logout successful');
-});
-router.post('/signup', (req, res) => {
-    res.send('SignUp successful');
-});
+import { loginUser, logoutUser, signup } from '../controllers/auth.controller.js';
+
+const router = express.Router(); // Corrected capitalization
+
+router.post("/api/auth/signup", signup);
+router.post("/api/auth/login", loginUser);
+router.get("/api/auth/logout", logoutUser);
 
 export default router;
